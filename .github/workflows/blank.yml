@@ -28,7 +28,7 @@ jobs:
        FUSION_SET_ID:  ${{secrets.APPDOME_FUSION_SET}}
        SIGN_OPTIONS: "SIGN_ON_APPDOME"
        KEYSTORE_FILE: "./appdome.keystore"
-#        SECOND_OUTPUT: true
+       SECOND_OUTPUT: true
        BUILD_TO_TEST: "lambdatest"
        KEYSTORE_PASSWORD: "appdome"
        KEYSTORE_ALIAS: "appdome"
@@ -37,6 +37,7 @@ jobs:
    - name: Example of using Appdome secured app
      run: |
         echo ${{ env.APPDOME_SECURED_APP }}
+        echo ${{ env.APPDOME_SECURED_APP_SECOND_OUTPUT }}
 
 #    - name: Appdome build-2secure
 #      id: appdome-build
