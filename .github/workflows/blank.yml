@@ -19,15 +19,32 @@ jobs:
  # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
    - uses: actions/checkout@v3
    - name: Appdome build-2secure
-     id: appdome-build
-     uses: Appdome/github_build-2secure@1.0
+  # You may pin to the exact commit or the version.
+  # uses: Appdome/github_build-2secure@85e6359e54cc2eee60d66a599fd37c0ee15f70dd
+     uses: Appdome/github_build-2secure@1.1
      with:
-        APP_FILE: "./TimeCard.apk"
-        FUSION_SET_ID:  ${{secrets.APPDOME_FUSION_SET}}
-        SIGN_OPTIONS: "PRIVATE_SIGNING"
-        APPDOME_API_TOKEN: ${{secrets.APPDOME_API_KEY}}
-        SIGN_FINGERPRINT: ${{secrets.APPDOME_SIGN_FINGERPRINT}}
-        BUILD_WITH_LOGS: true
+       APP_FILE: "./TimeCard.apk"
+       FUSION_SET_ID:  "4d9c60f0-1efc-11ee-b791-733894ee57f4"
+       SIGN_OPTIONS: "SIGN_ON_APPDOME"
+       APPDOME_API_TOKEN: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYmZkNGM2ZTAtMWJmZS0xMWVlLWJhMGQtNDFlOGUzNWUzMGRjIiwic2FsdCI6IjYzZGQ0ZjhlLWJiYjktNGNlZC1iZjY0LTJjYjI5NTUyZWViNCJ9.elExsNJ6KOmfv9j8MbnNpsoUWqdAcDkOgOp9poQtnuI"
+       KEYSTORE_FILE: "./appdome.keystore"
+       SECOND_OUTPUT: true
+       BUILD_TO_TEST: "LAMBDATEST"
+       KEYSTORE_PASSWORD: "appdome"
+       KEYSTORE_ALIAS: "appdome"
+       KEYSTORE_KEY_PASSWORD: "appdome"
+    
    - name: Example of using Appdome secured app
      run: |
         echo ${{ env.APPDOME_SECURED_APP }}
+
+#    - name: Appdome build-2secure
+#      id: appdome-build
+#      uses: Appdome/github_build-2secure@1.0
+#      with:
+#         APP_FILE: "./TimeCard.apk"
+#         FUSION_SET_ID:  ${{secrets.APPDOME_FUSION_SET}}
+#         SIGN_OPTIONS: "PRIVATE_SIGNING"
+#         APPDOME_API_TOKEN: ${{secrets.APPDOME_API_KEY}}
+#         SIGN_FINGERPRINT: ${{secrets.APPDOME_SIGN_FINGERPRINT}}
+#         BUILD_WITH_LOGS: true
