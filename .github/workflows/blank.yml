@@ -23,10 +23,10 @@ jobs:
   # uses: Appdome/github_build-2secure@85e6359e54cc2eee60d66a599fd37c0ee15f70dd
      uses: Appdome/github_build-2secure@1.1
      with:
+       APPDOME_API_TOKEN: ${{secrets.APPDOME_API_KEY}}
        APP_FILE: "./TimeCard.apk"
-       FUSION_SET_ID:  "4d9c60f0-1efc-11ee-b791-733894ee57f4"
+       FUSION_SET_ID:  ${{secrets.APPDOME_FUSION_SET}}
        SIGN_OPTIONS: "SIGN_ON_APPDOME"
-       APPDOME_API_TOKEN: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYmZkNGM2ZTAtMWJmZS0xMWVlLWJhMGQtNDFlOGUzNWUzMGRjIiwic2FsdCI6IjYzZGQ0ZjhlLWJiYjktNGNlZC1iZjY0LTJjYjI5NTUyZWViNCJ9.elExsNJ6KOmfv9j8MbnNpsoUWqdAcDkOgOp9poQtnuI"
        KEYSTORE_FILE: "./appdome.keystore"
        SECOND_OUTPUT: true
        BUILD_TO_TEST: "LAMBDATEST"
