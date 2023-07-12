@@ -28,8 +28,8 @@ jobs:
        FUSION_SET_ID:  ${{secrets.APPDOME_FUSION_SET}}
        SIGN_OPTIONS: "SIGN_ON_APPDOME"
        KEYSTORE_FILE: "./appdome.keystore"
-#        SECOND_OUTPUT: true
-       BUILD_TO_TEST: "browserstack"
+       SECOND_OUTPUT: true
+       BUILD_TO_TEST: "saucelabs"
        KEYSTORE_PASSWORD: "appdome"
        KEYSTORE_ALIAS: "appdome"
        KEYSTORE_KEY_PASSWORD: "appdome"
