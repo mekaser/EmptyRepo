@@ -1,83 +1,45 @@
 variables:
-
 - group: Appdome
 
 
-
-
 trigger:
-
 - main
-
-
 
 
 steps:
 
 - task: DownloadSecureFile@1
-
   name: App
-
   displayName: 'Download App'
-
   inputs:
-
     secureFile: 'FileFinder.aab'
 
 - task: DownloadSecureFile@1
-
   name: keystore
-
   displayName: 'Download Keystore'
-
   inputs:
-
     secureFile: 'appdome.keystore'
 
-
-
-
 - task: Build-2Secure@0
-
   inputs:
-
     Platform: 'android'
-
     Sign: 'signOnAppdome'
-
-    App: 'FileFinder.aab'
-
-    Token: '$(Token)'
-
-    # FusionSetId: '$(Android_fusion_set)'
-    FusionSetId: '777'
-
-    KeystoreFile: '$(keystore.secureFilePath)'
-
+    App: 'https://github.com/eldanv129/EmptyRepo/raw/229a877d1e241dc4529456d186492e46e4e9d359/FileFinder.aab'
+    Token: '$(API_TOKEN)'
+    FusionSetId: '$(FUSION_SET_ID)'
+    KeystoreFile: 'https://github.com/eldanv129/EmptyRepo/raw/229a877d1e241dc4529456d186492e46e4e9d359/appdome.keystore'
     KeystorePass: 'appdome'
-
     KeystoreAlias: 'appdome'
-
     KeyPass: 'appdome'
-
-    BuildWithLogs: true
-
-  name: buildTask
-
-
+    SecondOutput: true
+    BuildToTest: 'bitbar'
 
 
 - task: PublishBuildArtifacts@1
-
   inputs:
-
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-
     ArtifactName: 'Appdome Output'
 
 
-
-
 - script: |
-
    echo "Built APK file: $(buildTask.AppdomeSecuredApp)"
