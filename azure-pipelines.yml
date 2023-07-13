@@ -10,28 +10,6 @@ trigger:
 
 steps:
 
-- task: DownloadSecureFile@1
-
-  name: App
-
-  displayName: 'Download App'
-
-  inputs:
-
-    secureFile: 'https://github.com/eldanv129/EmptyRepo/raw/229a877d1e241dc4529456d186492e46e4e9d359/FileFinder.aab'
-
-
-- task: DownloadSecureFile@1
-
-  name: keystore
-
-  displayName: 'Download Keystore'
-
-  inputs:
-
-    secureFile: 'https://github.com/eldanv129/EmptyRepo/raw/229a877d1e241dc4529456d186492e46e4e9d359/appdome.keystore'
-
-
 - task: Build-2Secure@0
 
   inputs:
@@ -40,13 +18,13 @@ steps:
     
     Sign: 'signOnAppdome'
     
-    App: '$(App.secureFilePath)'
+    App: 'https://github.com/eldanv129/EmptyRepo/raw/229a877d1e241dc4529456d186492e46e4e9d359/FileFinder.aab'
     
-    Token: '$(API_TOKEN)'
+    Token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYmZkNGM2ZTAtMWJmZS0xMWVlLWJhMGQtNDFlOGUzNWUzMGRjIiwic2FsdCI6IjYzZGQ0ZjhlLWJiYjktNGNlZC1iZjY0LTJjYjI5NTUyZWViNCJ9.elExsNJ6KOmfv9j8MbnNpsoUWqdAcDkOgOp9poQtnuI'
     
-    FusionSetId: '$(FUSION_SET_ID)'
+    FusionSetId: '4d9c60f0-1efc-11ee-b791-733894ee57f4'
     
-    KeystoreFile: '$(keystore.secureFilePath)'
+    KeystoreFile: 'https://github.com/eldanv129/EmptyRepo/raw/229a877d1e241dc4529456d186492e46e4e9d359/appdome.keystore'
     
     KeystorePass: 'appdome'
     
