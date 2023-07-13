@@ -22,7 +22,7 @@ steps:
 
   inputs:
 
-    secureFile: 'TimeCard.apk'
+    secureFile: 'FileFinder.aab'
 
 - task: DownloadSecureFile@1
 
@@ -45,7 +45,7 @@ steps:
 
     Sign: 'signOnAppdome'
 
-    App: 'TimeCard.apk'
+    App: 'FileFinder.aab'
 
     Token: '$(Token)'
 
