@@ -7,13 +7,13 @@ steps:
   inputs:
     Platform: 'android'
     Sign: 'signOnAppdome'
-    App: 'https://github.com/eldanv129/EmptyRepo/raw/main/FileFinder.aab'
-    Token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYmZkNGM2ZTAtMWJmZS0xMWVlLWJhMGQtNDFlOGUzNWUzMGRjIiwic2FsdCI6IjYzZGQ0ZjhlLWJiYjktNGNlZC1iZjY0LTJjYjI5NTUyZWViNCJ9.elExsNJ6KOmfv9j8MbnNpsoUWqdAcDkOgOp9poQtnuI'
-    FusionSetId: '4d9c60f0-1efc-11ee-b791-733894ee57f4'
-    KeystoreFile: 'https://github.com/eldanv129/EmptyRepo/raw/main/appdome.keystore'
-    KeystorePass: 'appdome'
-    KeystoreAlias: 'appdome'
-    KeyPass: 'appdome'
+    App: ''
+    Token: ''
+    FusionSetId: ''
+    KeystoreFile: ''
+    KeystorePass: ''
+    KeystoreAlias: ''
+    KeyPass: ''
     SecondOutput: true
     BuildToTest: 'bitbar'
 
