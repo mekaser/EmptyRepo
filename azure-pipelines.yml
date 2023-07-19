@@ -26,7 +26,7 @@ steps:
     KeystoreAlias: 'appdome'
     KeyPass: 'appdome'
     SecondOutput: true
-    BuildToTest: 'bitbar'
+    BuildToTest: 'None'
 
 - task: PublishBuildArtifacts@1
   inputs:
