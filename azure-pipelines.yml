@@ -14,22 +14,6 @@ steps:
     secureFile: 'FileFinder.aab'
   name: app
 
-# - task: Build-2Secure@0
-#   inputs:
-#     Platform: 'android'
-#     Sign: 'signOnAppdome'
-#     App: '$(app.secureFilePath)'
-#     Token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYmZkNGM2ZTAtMWJmZS0xMWVlLWJhMGQtNDFlOGUzNWUzMGRjIiwic2FsdCI6IjYzZGQ0ZjhlLWJiYjktNGNlZC1iZjY0LTJjYjI5NTUyZWViNCJ9.elExsNJ6KOmfv9j8MbnNpsoUWqdAcDkOgOp9poQtnuI"
-#     # Token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNzk5MTY5NDAtMWJmZS0xMWVlLWI4NzItOWJkZTg0M2QyYmUyIiwic2FsdCI6IjkyOTI0NjRhLWY4MTUtNDA5Zi05NGJiLTE5MTFjMWZiNTFmMCJ9.D1ywWh1K6pabwdFEJTMyd6BA1nBlIDKMvGEGQG976io"
-#     FusionSetId: '4d9c60f0-1efc-11ee-b791-733894ee57f4'
-#     # FusionSetId: '7fafc440-1ff8-11ee-a1d0-854aee3efdaf'
-#     KeystoreFile: '$(keystore.secureFilePath)'
-#     KeystorePass: 'appdome'
-#     KeystoreAlias: 'appdome'
-#     KeyPass: 'appdome'
-#     SecondOutput: true
-#     BuildToTest: 'None'
-
 - task: Build-2Secure@0
   inputs:
     Platform: 'android'
@@ -41,6 +25,7 @@ steps:
     KeystorePass: 'appdome'
     KeystoreAlias: 'appdome'
     KeyPass: 'appdome'
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
