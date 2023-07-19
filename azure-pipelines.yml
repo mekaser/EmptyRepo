@@ -26,7 +26,6 @@ steps:
     KeystoreAlias: 'appdome'
     KeyPass: 'appdome'
 
-
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
