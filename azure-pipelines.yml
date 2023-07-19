@@ -14,7 +14,7 @@ steps:
     secureFile: 'FileFinder.aab'
   name: app
 
-- task: Build-2Secure@0
+- task: Build-2Secure@1
   inputs:
     Platform: 'android'
     Sign: 'signOnAppdome'
