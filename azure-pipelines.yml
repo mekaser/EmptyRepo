@@ -5,17 +5,17 @@ trigger:
 steps:
 - task: Build-2Secure@0
   inputs:
+    App: ""
+    FusionSetId: ""
+    Token: ""
     Platform: 'android'
     Sign: 'signOnAppdome'
-    App: ''
-    Token: ''
-    FusionSetId: ''
-    KeystoreFile: ''
-    KeystorePass: ''
-    KeystoreAlias: ''
-    KeyPass: ''
+    KeystorePass: 'appdome'
+    KeystoreAlias: 'appdome'
+    KeyPass: 'appdome'
+    BuildWithLogs: true
     SecondOutput: true
-    BuildToTest: 'bitbar'
+    BuildToTest: 'lambdatest'
 
 - task: PublishBuildArtifacts@1
   inputs:
