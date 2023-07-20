@@ -1,7 +1,6 @@
 trigger:
 - main
 
-
 steps:
 
 - task: DownloadSecureFile@1
