@@ -14,7 +14,7 @@ steps:
     secureFile: 'FileFinder.aab'
   name: app
 
-- task: Build-2Secure@1
+- task: Build-2Secure@0
   inputs:
     Platform: 'android'
     Sign: 'signOnAppdome'
@@ -25,9 +25,8 @@ steps:
     KeystorePass: 'appdome'
     KeystoreAlias: 'appdome'
     KeyPass: 'appdome'
-    BuildToTest: 'bitbar'
     SecondOutput: true
-
+    BuildToTest: 'bitbar'
 
 - task: PublishBuildArtifacts@1
   inputs:
