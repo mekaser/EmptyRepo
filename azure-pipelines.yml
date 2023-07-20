@@ -22,7 +22,7 @@ steps:
     Token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYmZkNGM2ZTAtMWJmZS0xMWVlLWJhMGQtNDFlOGUzNWUzMGRjIiwic2FsdCI6IjYzZGQ0ZjhlLWJiYjktNGNlZC1iZjY0LTJjYjI5NTUyZWViNCJ9.elExsNJ6KOmfv9j8MbnNpsoUWqdAcDkOgOp9poQtnuI'
     FusionSetId: '4d9c60f0-1efc-11ee-b791-733894ee57f4'
     KeystoreFile: '$(keystore.secureFilePath)'
-    KeystorePass: 'appdome'
+    KeystorePass: ''
     KeystoreAlias: 'appdome'
     KeyPass: 'appdome'
 
