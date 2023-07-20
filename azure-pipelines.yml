@@ -24,7 +24,7 @@ steps:
     KeystoreFile: '$(keystore.secureFilePath)'
     KeystorePass: 'appdome'
     KeystoreAlias: 'appdome'
-    KeyPass: 'appdome'
+    KeyPass: ''
     BuildToTest: 'bitbar'
     SecondOutput: true
 
