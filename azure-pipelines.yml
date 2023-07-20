@@ -16,7 +16,7 @@ steps:
 
 - task: Build-2Secure@1
   inputs:
-    Platform: 'ios'
+    Platform: 'android'
     Sign: 'signOnAppdome'
     App: '$(app.secureFilePath)'
     Token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYmZkNGM2ZTAtMWJmZS0xMWVlLWJhMGQtNDFlOGUzNWUzMGRjIiwic2FsdCI6IjYzZGQ0ZjhlLWJiYjktNGNlZC1iZjY0LTJjYjI5NTUyZWViNCJ9.elExsNJ6KOmfv9j8MbnNpsoUWqdAcDkOgOp9poQtnuI'
@@ -27,6 +27,7 @@ steps:
     KeyPass: 'appdome'
     BuildToTest: 'bitbar'
     SecondOutput: true
+
 
 - task: PublishBuildArtifacts@1
   inputs:
