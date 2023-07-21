@@ -25,7 +25,7 @@ steps:
     KeystoreAlias: 'appdome'
     KeyPass: 'appdome'
     GoogleSign: true
-    ProvisioningProfile: 
+    ProvisioningProfile: "bla"
     SigningFingerprint: ""
     # SecondOutput: true
     BuildToTest: 'bitbar'
