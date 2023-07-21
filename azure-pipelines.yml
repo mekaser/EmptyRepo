@@ -25,7 +25,7 @@ steps:
     # KeystoreAlias: 'appdome'
     # KeyPass: 'appdome'
     SigningFingerprint: ""
-    SecondOutput: true
+    # SecondOutput: true
     BuildToTest: 'bitbar'
 
 
