@@ -31,6 +31,7 @@ steps:
     # SecondOutput: true
     BuildToTest: 'bitbar'
 
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
