@@ -32,6 +32,7 @@ jobs:
        KEYSTORE_PASSWORD: "appdome"
        KEYSTORE_ALIAS: "appdome"
        KEYSTORE_KEY_PASSWORD: "appdome"
+       
     
    - name: Example of using Appdome secured app
      run: |
