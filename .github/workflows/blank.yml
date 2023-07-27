@@ -23,7 +23,7 @@ jobs:
      uses: Appdome/github_build-2secure@1.1.2
      with:
        APPDOME_API_TOKEN: ${{secrets.APPDOME_API_KEY}}
-       APP_FILE: "./FileFinder.aab"
+#        APP_FILE: "./FileFinder.aab"
        FUSION_SET_ID:  ${{secrets.APPDOME_FUSION_SET}}
        SIGN_OPTIONS: "SIGN_ON_APPDOME"
 #        KEYSTORE_FILE: "./appdome.keystore"
