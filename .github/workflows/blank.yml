@@ -26,7 +26,7 @@ jobs:
        APP_FILE: "./FileFinder.aab"
        FUSION_SET_ID:  ${{secrets.APPDOME_FUSION_SET}}
        SIGN_OPTIONS: "SIGN_ON_APPDOME"
-       KEYSTORE_FILE: "./appdome.keystore"
+       KEYSTORE_FILE: ${{secrets.KEYSTORE}}
 #        SECOND_OUTPUT: true
 #        BUILD_TO_TEST: "saucelabs"
 #        KEYSTORE_PASSWORD: "appdome"
