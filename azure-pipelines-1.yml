@@ -6,7 +6,7 @@ variables:
 - group: Appdome
 
 trigger:
-- main
+- bla
 
 pool:
   vmImage: ubuntu-latest
