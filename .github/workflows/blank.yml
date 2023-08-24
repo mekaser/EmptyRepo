@@ -26,19 +26,19 @@ jobs:
        SIGN_OPTIONS: "SIGN_ON_APPDOME"
 
        # iOS
-       # APP_FILE: "./ARandomNumber.ipa"
-       # MOBILE_PROVISION_PROFILE_FILE: "./Automation.mobileprovision"
-       # ENTITLEMENTS_FILE: "./AutomationEntitlements.plist"
-       # KEYSTORE_FILE: "./AutomationCert.p12"
-       # KEYSTORE_PASSWORD: "nf1101"
-       # FUSION_SET_ID:  "7eeb3600-295f-11ee-8107-df185da8f11b"
+       APP_FILE: "./ARandomNumber.ipa"
+       MOBILE_PROVISION_PROFILE_FILE: "./Automation.mobileprovision"
+       ENTITLEMENTS_FILE: "./AutomationEntitlements.plist"
+       KEYSTORE_FILE: "./AutomationCert.p12"
+       KEYSTORE_PASSWORD: "nf1101"
+       FUSION_SET_ID:  "7eeb3600-295f-11ee-8107-df185da8f11b"
 
        # Android
-       APP_FILE: "./FileFinder.aab"
-       KEYSTORE_FILE: "./appdome.keystore"
-       KEYSTORE_PASSWORD: "appdome"
-       KEYSTORE_ALIAS: "appdome"
-       KEYSTORE_KEY_PASSWORD: "appdome"
+       # APP_FILE: "./FileFinder.aab"
+       # KEYSTORE_FILE: "./appdome.keystore"
+       # KEYSTORE_PASSWORD: "appdome"
+       # KEYSTORE_ALIAS: "appdome"
+       # KEYSTORE_KEY_PASSWORD: "appdome"
        # FUSION_SET_ID:  "7fafc440-1ff8-11ee-a1d0-854aee3efdaf"
        # SIGN_FINGERPRINT: "8DF593C1B6EAA6EADADCE36831FE82B08CAC8D74"
 
