@@ -46,7 +46,6 @@ jobs:
 #        SECOND_OUTPUT: true
 #        BUILD_TO_TEST: "saucelabs"
        
-       
    - name: Example of using Appdome secured app
      run: |
         echo ${{ env.APPDOME_SECURED_APP }}
