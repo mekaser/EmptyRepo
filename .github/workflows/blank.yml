@@ -29,8 +29,8 @@ jobs:
        APP_FILE: "./ARandomNumber.ipa"
        MOBILE_PROVISION_PROFILE_FILE: "./Automation.mobileprovision"
        ENTITLEMENTS_FILE: "./AutomationEntitlements.plist"
-       KEYSTORE_FILE: "./AutomationCert.p12"
-       KEYSTORE_PASSWORD: "nf1101"
+       CERTIFICATE_FILE: "./AutomationCert.p12"
+       CERTIFICATE_PASSWORD: "nf1101"
        FUSION_SET_ID:  "7eeb3600-295f-11ee-8107-df185da8f11b"
 
 
