@@ -33,7 +33,6 @@ jobs:
        CERTIFICATE_PASSWORD: "nf1101"
        FUSION_SET_ID:  "7eeb3600-295f-11ee-8107-df185da8f11b"
 
-
        # Android
        # APP_FILE: "./FileFinder.aab"
        # KEYSTORE_FILE: "./appdome.keystore"
