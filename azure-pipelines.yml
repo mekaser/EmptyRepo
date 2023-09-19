@@ -25,5 +25,4 @@ steps:
     ArtifactName: 'Appdome Output'
 
 - script: |
-   echo "Built APK file: $(buildTask.AppdomeSecuredApp)"
    echo "Built APK file: $(buildTask.AppDomeSecuredApp)"
