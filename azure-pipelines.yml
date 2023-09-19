@@ -27,7 +27,7 @@ steps:
 - script: |
    echo "Built APK file: $(buildTask.AppDomeSecuredApp)"
    ls $(System.ArtifactsDirectory)
-   ls '$(System.ArtifactsDirectory)/drop'
+   ls '$(System.ArtifactsDirectory)\drop'
 
 - task: PublishBuildArtifacts@1
   inputs:
