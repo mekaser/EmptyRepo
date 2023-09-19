@@ -11,7 +11,7 @@ steps:
 
 - task: Build-2Secure@0
   inputs:
-    Platform: 'ios'
+    Platform: 'android'
     Sign: 'autoDevSigning'
     App: '$(app.secureFilePath)'
     Token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNzk5MTY5NDAtMWJmZS0xMWVlLWI4NzItOWJkZTg0M2QyYmUyIiwic2FsdCI6IjkyOTI0NjRhLWY4MTUtNDA5Zi05NGJiLTE5MTFjMWZiNTFmMCJ9.D1ywWh1K6pabwdFEJTMyd6BA1nBlIDKMvGEGQG976io'
