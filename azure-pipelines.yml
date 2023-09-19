@@ -18,10 +18,12 @@ steps:
     FusionSetId: '7fafc440-1ff8-11ee-a1d0-854aee3efdaf'
     SigningFingerprint: '8DF593C1B6EAA6EADADCE36831FE82B08CAC8D74'
     OutputPath: '$(System.ArtifactsDirectory)/drop'
-    OutputFileName: 'SecuredUniversal'   
   name: 'buildTask'
 
-
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(buildTask.AppDomeSecuredApp)'
+    ArtifactName: 'Appdome Output'   
 
 - script: |
    echo "Built APK file: $(buildTask.AppDomeSecuredApp)"
