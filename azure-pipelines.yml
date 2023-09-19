@@ -18,6 +18,7 @@ steps:
     FusionSetId: '7fafc440-1ff8-11ee-a1d0-854aee3efdaf'
     SigningFingerprint: '8DF593C1B6EAA6EADADCE36831FE82B08CAC8D74'
     OutputPath: '$(System.ArtifactsDirectory)/drop'
+    OutputFileName: "$(System.ArtifactsDirectory)/drop/secureduniversal.apk"
   name: 'buildTask'
 
 - task: PublishBuildArtifacts@1
