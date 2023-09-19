@@ -1,6 +1,9 @@
 trigger:
 - bla
 
+pool:
+    vmImage: 'windows-latest'
+
 steps:
 
 
