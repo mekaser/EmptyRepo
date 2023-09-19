@@ -20,14 +20,14 @@ steps:
     Token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNzk5MTY5NDAtMWJmZS0xMWVlLWI4NzItOWJkZTg0M2QyYmUyIiwic2FsdCI6IjkyOTI0NjRhLWY4MTUtNDA5Zi05NGJiLTE5MTFjMWZiNTFmMCJ9.D1ywWh1K6pabwdFEJTMyd6BA1nBlIDKMvGEGQG976io'
     FusionSetId: '7fafc440-1ff8-11ee-a1d0-854aee3efdaf'
     SigningFingerprint: '8DF593C1B6EAA6EADADCE36831FE82B08CAC8D74'
-    OutputPath: '$(System.ArtifactsDirectory)/drop'
+    # OutputPath: '$(System.ArtifactsDirectory)/drop'
     OutputFileName: "secureduniversal"
   name: 'buildTask'
 
 - script: |
    echo "Built APK file: $(buildTask.AppDomeSecuredApp)"
-   ls $(System.ArtifactsDirectory)
-   ls '$(System.ArtifactsDirectory)\drop'
+   ls $(Build.ArtifactStagingDirectory)
+   ls '$(Build.ArtifactStagingDirectory)'
 
 - task: PublishBuildArtifacts@1
   inputs:
