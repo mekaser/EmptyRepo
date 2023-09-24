@@ -12,7 +12,7 @@ steps:
     secureFile: 'FileFinder.aab'
   name: app
 
-- task: Build-2Secure@0
+- task: Build-2Secure - test@0
   inputs:
     Platform: 'android'
     Sign: 'autoDevSigning'
@@ -35,4 +35,3 @@ steps:
   inputs:
     PathtoPublish: '$(buildTask.AppDomeSecuredApp)'
     ArtifactName: 'Appdome Output'   
-
