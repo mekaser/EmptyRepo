@@ -20,7 +20,6 @@ steps:
     Token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNzk5MTY5NDAtMWJmZS0xMWVlLWI4NzItOWJkZTg0M2QyYmUyIiwic2FsdCI6IjkyOTI0NjRhLWY4MTUtNDA5Zi05NGJiLTE5MTFjMWZiNTFmMCJ9.D1ywWh1K6pabwdFEJTMyd6BA1nBlIDKMvGEGQG976io'
     FusionSetId: 'd2574330-5856-11ee-800b-a111bd4d22d3'
     SigningFingerprint: '8DF593C1B6EAA6EADADCE36831FE82B08CAC8D74'
-    OutputPath: '$(System.ArtifactsDirectory)\drop'
     OutputFileName: "secureduniversal"
   name: 'buildTask'
 
