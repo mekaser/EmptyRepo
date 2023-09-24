@@ -30,3 +30,8 @@ steps:
   inputs:
     PathtoPublish: '$(buildTask.AppDomeSecuredApp)'
     ArtifactName: 'Appdome Output'   
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(buildTask.AppdomeDeobfuscationSripts)'
+    ArtifactName: 'Appdome Output'   
