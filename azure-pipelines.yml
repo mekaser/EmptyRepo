@@ -25,7 +25,7 @@ steps:
 
 - script: |
    echo "Built APK file: $(buildTask.AppDomeSecuredApp)"\
-   echo "dir: $(buildTask.AppdomeOutputs)"
+   echo "dir: $(buildTask.AppdomeOutputsDir)"
 
 
 - task: PublishBuildArtifacts@1
@@ -35,5 +35,5 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(buildTask.AppdomeOutputs)'
+    PathtoPublish: '$(buildTask.AppdomeOutputsDir)'
     ArtifactName: 'Appdome Output1'   
