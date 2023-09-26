@@ -35,5 +35,5 @@ steps:
 
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(buildTask.AppdomeDeobfuscationSripts)'
-    ArtifactName: 'Appdome Output'   
+    PathtoPublish: '$(buildTask.AppdomeOutputs)'
+    ArtifactName: 'Appdome Output1'   
