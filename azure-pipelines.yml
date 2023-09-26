@@ -24,7 +24,9 @@ steps:
   name: 'buildTask'
 
 - script: |
-   echo "Built APK file: $(buildTask.AppDomeSecuredApp)"
+   echo "Built APK file: $(buildTask.AppDomeSecuredApp)"\
+   echo "scripts: $(buildTask.AppdomeDeobfuscationSripts)"
+
 
 - task: PublishBuildArtifacts@1
   inputs:
