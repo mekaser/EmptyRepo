@@ -25,7 +25,7 @@ steps:
 
 - script: |
    echo "Built APK file: $(buildTask.AppDomeSecuredApp)"\
-   echo "scripts: $(buildTask.AppdomeDeobfuscationSripts)"
+   echo "dir: $(buildTask.AppdomeOutputs)"
 
 
 - task: PublishBuildArtifacts@1
