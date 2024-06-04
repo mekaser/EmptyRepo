@@ -23,14 +23,14 @@ jobs:
      uses: Appdome/github_build-2secure@latest
      with:
        APPDOME_API_TOKEN: ${{secrets.APPDOME_API_KEY}}
-       SIGN_OPTIONS: "PRIVATE_SIGNING"
+       SIGN_OPTIONS: "SIGN_ON_APPDOME"
 
        # iOS
-       APP_FILE: "./ARandomNumber.ipa"
-       MOBILE_PROVISION_PROFILE_FILE: "./Automation.mobileprovision"
-       # ENTITLEMENTS_FILE: "./AutomationEntitlements.plist"
-       # KEYSTORE_FILE: "./AutomationCert.p12"
-       # CERTIFICATE_PASSWORD: "nf1101"
+       APP_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/Apps/FileFinder.ipa?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240604%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240604T105010Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=e8a768456be30334597e23a22a916275c902c0ec22453ec7d28138ead25b9e3e"
+       MOBILE_PROVISION_PROFILE_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/Automation.mobileprovision?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240604%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240604T105010Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=20e41b23ccd85e38ccb5e247fc2e26669f863128ae8307a0336a0dd8a2e8c093"
+       ENTITLEMENTS_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/AutomationEntitlements.plist?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240604%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240604T105010Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=7b2b19cb8ddc9aadba8601eb2932d3c8f2ec690d8444f566c3e29484361c4c20"
+       CERTIFICATE_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/AutomationCert.p12?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240604%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240604T105010Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=d50aabf47c246ca381b9e371883ac6ebb5ca6791f5aa020183d094186f7f49ac"
+       CERTIFICATE_PASSWORD: "nf1101"
        FUSION_SET_ID:  "b1bc7bb0-225c-11ef-a7bb-7b3ae7bd533e"
 
        # Android
@@ -43,7 +43,7 @@ jobs:
        # SIGN_FINGERPRINT: "8DF593C1B6EAA6EADADCE36831FE82B08CAC8D74"
 
        # SECOND_OUTPUT: true
-       OUTPUT_APP_NAME: "test/test_ARandomNumber.ipa"
+       OUTPUT_APP_NAME: "test/test_FileFinder.ipa"
 #        BUILD_TO_TEST: "saucelabs"
        
    - name: Example of using Appdome secured app
