@@ -34,7 +34,7 @@ jobs:
        # FUSION_SET_ID:  "dd6b1360-5864-11ee-96fa-bb616f57e574"
 
        # Android
-       APP_FILE: "./FileFinder.aab"
+       APK_FILE: "./TimeCard.apk"
        # KEYSTORE_FILE: "./appdome.keystore"
        # KEYSTORE_PASSWORD: "appdome"
        # KEYSTORE_ALIAS: "appdome"
