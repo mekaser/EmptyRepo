@@ -39,7 +39,7 @@ jobs:
        # KEYSTORE_PASSWORD: "appdome"
        # KEYSTORE_ALIAS: "appdome"
        # KEYSTORE_KEY_PASSWORD: "appdome"
-       FUSION_SET_ID:  "d2574330-5856-11ee-800b-a111bd4d22d3"
+       FUSION_SET_ID:   ${{secrets.FUSION_SET_ID}}
        SIGN_FINGERPRINT: "8DF593C1B6EAA6EADADCE36831FE82B08CAC8D74"
 
        # SECOND_OUTPUT: true
