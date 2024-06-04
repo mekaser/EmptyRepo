@@ -27,11 +27,11 @@ jobs:
 
        # iOS
        APP_FILE: "./ARandomNumber.ipa"
-       # MOBILE_PROVISION_PROFILE_FILE: "./Automation.mobileprovision"
+       MOBILE_PROVISION_PROFILE_FILE: "./Automation.mobileprovision"
        # ENTITLEMENTS_FILE: "./AutomationEntitlements.plist"
        # KEYSTORE_FILE: "./AutomationCert.p12"
        # CERTIFICATE_PASSWORD: "nf1101"
-       # FUSION_SET_ID:  "dd6b1360-5864-11ee-96fa-bb616f57e574"
+       FUSION_SET_ID:  "b1bc7bb0-225c-11ef-a7bb-7b3ae7bd533e"
 
        # Android
        # APP_FILE: "./TimeCard.apk"
@@ -39,8 +39,8 @@ jobs:
        # KEYSTORE_PASSWORD: "appdome"
        # KEYSTORE_ALIAS: "appdome"
        # KEYSTORE_KEY_PASSWORD: "appdome"
-       FUSION_SET_ID:   "b1bc7bb0-225c-11ef-a7bb-7b3ae7bd533e"
-       SIGN_FINGERPRINT: "8DF593C1B6EAA6EADADCE36831FE82B08CAC8D74"
+       # FUSION_SET_ID:   "b1bc7bb0-225c-11ef-a7bb-7b3ae7bd533e"
+       # SIGN_FINGERPRINT: "8DF593C1B6EAA6EADADCE36831FE82B08CAC8D74"
 
        # SECOND_OUTPUT: true
        OUTPUT_APP_NAME: "test/test_ARandomNumber.ipa"
