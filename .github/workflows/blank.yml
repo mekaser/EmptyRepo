@@ -35,15 +35,14 @@ jobs:
 
        # Android
        APP_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/crashlitics_test.aab?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240606%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240606T095126Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=dac3c5266b6224e84d5efc1144795a65931d3d9227178b96468cf263511f41bc"
-       # KEYSTORE_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/appdome.keystore?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240606%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240606T094254Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=6174b8c0aa97f595b55a06e620b42a63ff570722010176f1629f0be834a93175"
-       # KEYSTORE_PASSWORD: "appdome"
-       # KEYSTORE_ALIAS: "appdome"
-       # KEYSTORE_KEY_PASSWORD: "appdome"
+       KEYSTORE_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/appdome.keystore?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240606%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240606T094254Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=6174b8c0aa97f595b55a06e620b42a63ff570722010176f1629f0be834a93175"
+       KEYSTORE_PASSWORD: "appdome"
+       KEYSTORE_ALIAS: "appdome"
+       KEYSTORE_KEY_PASSWORD: "appdome"
        FUSION_SET_ID:   "37015ab0-226d-11ef-a76e-97c41ade4d80"
        SIGN_FINGERPRINT: "8DF593C1B6EAA6EADADCE36831FE82B08CAC8D74"
        FIREBASE_APP_ID: "1:304073265070:android:404d3d50c1f936b17ac23f"
        GOOGLE_APPLICATION_CREDENTIALS: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/crashlitics_credentials.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240606%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240606T095126Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=b1013693d2d1b5304bfc7a99601ada0f00262443a96974f5879eacbe77e00b4a"
-       # SECOND_OUTPUT: true
        OUTPUT_APP_NAME: "test/MeKaser_crashlitics_test_from_repo.aab"
 #        BUILD_TO_TEST: "saucelabs"
        
