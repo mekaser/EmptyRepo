@@ -42,7 +42,6 @@ jobs:
        FUSION_SET_ID:   "37015ab0-226d-11ef-a76e-97c41ade4d80"
        SIGN_FINGERPRINT: "8DF593C1B6EAA6EADADCE36831FE82B08CAC8D74"
        FIREBASE_APP_ID: "1:304073265070:android:404d3d50c1f936b17ac23f"
-       BUILD_WITH_LOGS: true
        GOOGLE_APPLICATION_CREDENTIALS: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/crashlitics_credentials.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240606%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240606T095126Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=b1013693d2d1b5304bfc7a99601ada0f00262443a96974f5879eacbe77e00b4a"
        # SECOND_OUTPUT: true
        OUTPUT_APP_NAME: "test/MeKaser_crashlitics_test_from_repo.aab"
