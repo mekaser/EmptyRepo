@@ -44,7 +44,7 @@ jobs:
        FIREBASE_APP_ID: "1:304073265070:android:404d3d50c1f936b17ac23f"
        GOOGLE_APPLICATION_CREDENTIALS: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/crashlitics_credentials.json?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240606%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240606T095126Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=b1013693d2d1b5304bfc7a99601ada0f00262443a96974f5879eacbe77e00b4a"
        # SECOND_OUTPUT: true
-       OUTPUT_APP_NAME: "test/MeKaser_crashlitics_test_from_repo.aab"
+       OUTPUT_APP_NAME: "test/MeKaser_crashlitics_test_from_repo2.aab"
 #        BUILD_TO_TEST: "saucelabs"
        
    - name: Example of using Appdome secured app
