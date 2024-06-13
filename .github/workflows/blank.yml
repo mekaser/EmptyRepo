@@ -74,7 +74,7 @@ jobs:
       ref: ${{ fromJson(github.event.client_payload.data).branch }}
    - name: Appdome build-2secure
   # You may pin to the exact commit or the version.
-     uses: Appdome/github_build-2secure@latest
+     uses: Appdome/github_build-2secure@pipline_testing
      with:
           APPDOME_API_TOKEN: ${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}
           SIGN_OPTIONS: "PRIVATE_SIGNING"
