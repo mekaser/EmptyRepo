@@ -1,1 +1,44 @@
+name: Triggered Workflow
+# Controls when the workflow will run
+on:
+ 
+ # Allows you to run this workflow manually from the Actions tab
+ workflow_dispatch:
+ repository_dispatch:
+    types: [custom-event]
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+ # This workflow contains a single job called "build"
+ build:
+ # The type of runner that the job will run on
+  runs-on: ubuntu-latest
+ # Steps represent a sequence of tasks that will be executed as part of the job
+  steps:
+ # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+   - uses: actions/checkout@v3
+   - name: Appdome build-2secure
+  # You may pin to the exact commit or the version.
+     uses: Appdome/github_build-2secure@test_crashlitics
+     with:
+          APPDOME_API_TOKEN: ${{ github.event.client_payload.APPDOME_API_TOKEN }}
+          SIGN_OPTIONS: ${{ github.event.client_payload.SIGN }}
+          APP_FILE: ${{ github.event.client_payload.APP }}
+          MOBILE_PROVISION_PROFILE_FILE: ${{ github.event.client_payload.MOBILE_PROVISION_PROFILE_FILE }}
+          ENTITLEMENTS_FILE: ${{ github.event.client_payload.ENTITLEMENTS }}
+          CERTIFICATE_FILE: ${{ github.event.client_payload.CERT }}
+          CERTIFICATE_PASSWORD: ${{ github.event.client_payload.CERTIFICATE_PASSWORD }}
+          FUSION_SET_ID: ${{ github.event.client_payload.FUSION_SET }}
+          KEYSTORE_FILE: ${{ github.event.client_payload.KEYSTORE_FILE }}
+          KEYSTORE_PASSWORD: ${{ github.event.client_payload.KEYSTORE_PASSWORD }}
+          KEYSTORE_ALIAS: ${{ github.event.client_payload.KEYSTORE_ALIAS }}
+          KEYSTORE_KEY_PASSWORD: ${{ github.event.client_payload.KEYSTORE_KEY_PASSWORD }}
+          SIGN_FINGERPRINT: ${{ github.event.client_payload.SIGN_FINGERPRINT }}
+          FIREBASE_APP_ID: ${{ github.event.client_payload.FIREBASE_APP_ID }}
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ github.event.client_payload.GOOGLE_APPLICATION_CREDENTIALS }}
+          OUTPUT_APP_NAME: ${{ github.event.client_payload.OUTPUT_APP_NAME }}
 
+       
+   - name: Example of using Appdome secured app
+     run: |
+        echo ${{ env.APPDOME_SECURED_APP }}
+        echo ${{ env.APPDOME_SECURED_APP_SECOND_OUTPUT }}
