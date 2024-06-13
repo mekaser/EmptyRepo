@@ -34,7 +34,7 @@ jobs:
        # FUSION_SET_ID:  "b1bc7bb0-225c-11ef-a7bb-7b3ae7bd533e"
 
        # Android
-       APP_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/crashlitics_test.aab?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240606%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240606T095126Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=dac3c5266b6224e84d5efc1144795a65931d3d9227178b96468cf263511f41bc"
+       APP_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/Apps/FileFinder.aab?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240613%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240613T125016Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=8b9ef502d52530e7abd19d4b5e0ad1644d91ce14972b5f6ce963bf1a8395aeb7"
        KEYSTORE_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/appdome.keystore?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240606%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240606T095126Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=e750cfb8760d39cbd9d7503715334287fe02f67e5b46d402954144b9938483a0"
        KEYSTORE_PASSWORD: "appdome"
        KEYSTORE_ALIAS: "appdome"
