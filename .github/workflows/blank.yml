@@ -79,15 +79,15 @@ jobs:
           APPDOME_API_TOKEN: ${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}
           SIGN_OPTIONS: "PRIVATE_SIGNING"
           APP_FILE: ${{ fromJson(github.event.client_payload.data).APP_FILE }}
-          MOBILE_PROVISION_PROFILE_FILE: ${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}
-          ENTITLEMENTS_FILE: ${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}
-          CERTIFICATE_FILE: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}
-          CERTIFICATE_PASSWORD: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}
+          # MOBILE_PROVISION_PROFILE_FILE: ${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}
+          # ENTITLEMENTS_FILE: ${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}
+          # CERTIFICATE_FILE: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}
+          # CERTIFICATE_PASSWORD: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}
           FUSION_SET_ID: ${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}
-          KEYSTORE_FILE: ${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}
-          KEYSTORE_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}
-          KEYSTORE_ALIAS: ${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}
-          KEYSTORE_KEY_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}
+          # KEYSTORE_FILE: ${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}
+          # KEYSTORE_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}
+          # KEYSTORE_ALIAS: ${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}
+          # KEYSTORE_KEY_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}
           SIGN_FINGERPRINT: ${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}
           # FIREBASE_APP_ID: ${{ fromJson(github.event.client_payload.data).FIREBASE_APP_ID }}
           # GOOGLE_APPLICATION_CREDENTIALS: ${{ fromJson(github.event.client_payload.data).GOOGLE_APPLICATION_CREDENTIALS }}
