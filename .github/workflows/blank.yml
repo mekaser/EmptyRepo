@@ -83,7 +83,7 @@ jobs:
           ENTITLEMENTS_FILE: ${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}
           CERTIFICATE_FILE: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}
           CERTIFICATE_PASSWORD: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}
-          FUSION_SET_ID: ${{ fromJson(github.event.client_payload.data).FUSION_SET }}
+          FUSION_SET_ID: ${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}
           KEYSTORE_FILE: ${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}
           KEYSTORE_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}
           KEYSTORE_ALIAS: ${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}
