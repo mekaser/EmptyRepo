@@ -35,7 +35,7 @@ jobs:
 
        # Android
        APP_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Vanillas-28.8.23/Ailos.aab?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240617%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240617T140244Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=d7c3b51cbf05744912b4207c8c2991c68c174f952b0116cfe5ca8237cd7284ca"
-       KEYSTORE_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Vanillas-28.8.23/appdome.keystore?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240617%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240617T140244Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=7a9ce2b009b037cc947d667a2de67995f8c73093a510e0a0bcd0e27f7f0fc1e3"
+       KEYSTORE_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/appdome.keystore?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240617%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240617T142715Z&X-Amz-Expires=3600&X-Amz-SignedHeaders=host&X-Amz-Signature=51d8a53df8ece5e7ff523888171710a06d524f66de4cd36f8868a5fb007eaaaa"
        KEYSTORE_PASSWORD: "appdome"
        KEYSTORE_ALIAS: "appdome"
        KEYSTORE_KEY_PASSWORD: "appdome"
