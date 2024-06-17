@@ -77,18 +77,18 @@ jobs:
      uses: Appdome/github_build-2secure@pipline_testing
      with:
           APPDOME_API_TOKEN: ${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}
-          SIGN_OPTIONS: "PRIVATE_SIGNING"
+          SIGN_OPTIONS: ${{ fromJson(github.event.client_payload.data).SIGN_OPTIONS }}
           TEAM-ID: ${{ fromJson(github.event.client_payload.data).TEAM_ID }}
           APP_FILE: ${{ fromJson(github.event.client_payload.data).APP_FILE }}
-          # MOBILE_PROVISION_PROFILE_FILE: ${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}
-          # ENTITLEMENTS_FILE: ${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}
-          # CERTIFICATE_FILE: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}
-          # CERTIFICATE_PASSWORD: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}
+          MOBILE_PROVISION_PROFILE_FILE: ${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}
+          ENTITLEMENTS_FILE: ${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}
+          CERTIFICATE_FILE: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}
+          CERTIFICATE_PASSWORD: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}
           FUSION_SET_ID: ${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}
-          # KEYSTORE_FILE: ${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}
-          # KEYSTORE_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}
-          # KEYSTORE_ALIAS: ${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}
-          # KEYSTORE_KEY_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}
+          KEYSTORE_FILE: ${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}
+          KEYSTORE_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}
+          KEYSTORE_ALIAS: ${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}
+          KEYSTORE_KEY_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}
           GOOGLE-PLAY-SIGNING : ${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}
           SIGN_FINGERPRINT: ${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}
           # FIREBASE_APP_ID: ${{ fromJson(github.event.client_payload.data).FIREBASE_APP_ID }}
