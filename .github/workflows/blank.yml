@@ -89,6 +89,7 @@ jobs:
           # KEYSTORE_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}
           # KEYSTORE_ALIAS: ${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}
           # KEYSTORE_KEY_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}
+          GOOGLE-PLAY-SIGNING : ${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}
           SIGN_FINGERPRINT: ${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}
           # FIREBASE_APP_ID: ${{ fromJson(github.event.client_payload.data).FIREBASE_APP_ID }}
           # GOOGLE_APPLICATION_CREDENTIALS: ${{ fromJson(github.event.client_payload.data).GOOGLE_APPLICATION_CREDENTIALS }}
