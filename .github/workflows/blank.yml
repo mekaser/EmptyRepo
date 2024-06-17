@@ -20,7 +20,7 @@ jobs:
    - uses: actions/checkout@v3
    - name: Appdome build-2secure
   # You may pin to the exact commit or the version.
-     uses: Appdome/github_build-2secure@latest
+     uses: Appdome/github_build-2secure@pipline_testing
      with:
        APPDOME_API_TOKEN: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYWQ2Yzk4MzAtMTY5OC0xMWVmLWI2NDktMzM3Y2U1NzAwNDY3Iiwic2FsdCI6IjRmMjBjMTRjLWU1MWItNDQ3YS1hMjBjLTNmY2FiNGIxODFlYSJ9.AI5soWJrClObNzD1T0yy_hLWVfLGyam08fhQm5QT4qs"
        SIGN_OPTIONS: "SIGN_ON_APPDOME"
