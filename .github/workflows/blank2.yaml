@@ -13,64 +13,68 @@ jobs:
           ref: ${{ fromJson(github.event.client_payload.data).branch }}
 
       - name: Set environment variables
+        id: set_env
         run: |
-          echo "INPUTS=\"\"" > inputs.sh
+          echo "INPUTS={}" > inputs.json
           if [ "${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}" != "null" ]; then
-            echo "INPUTS+=\"APPDOME_API_TOKEN=${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {APPDOME_API_TOKEN: \"${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).SIGN_OPTIONS }}" != "null" ]; then
-            echo "INPUTS+=\"SIGN_OPTIONS=${{ fromJson(github.event.client_payload.data).SIGN_OPTIONS }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {SIGN_OPTIONS: \"${{ fromJson(github.event.client_payload.data).SIGN_OPTIONS }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).TEAM_ID }}" != "null" ]; then
-            echo "INPUTS+=\"TEAM_ID=${{ fromJson(github.event.client_payload.data).TEAM_ID }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {TEAM_ID: \"${{ fromJson(github.event.client_payload.data).TEAM_ID }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).APP_FILE }}" != "null" ]; then
-            echo "INPUTS+=\"APP_FILE=${{ fromJson(github.event.client_payload.data).APP_FILE }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {APP_FILE: \"${{ fromJson(github.event.client_payload.data).APP_FILE }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}" != "null" ]; then
-            echo "INPUTS+=\"MOBILE_PROVISION_PROFILE_FILE=${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {MOBILE_PROVISION_PROFILE_FILE: \"${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}" != "null" ]; then
-            echo "INPUTS+=\"ENTITLEMENTS_FILE=${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {ENTITLEMENTS_FILE: \"${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}" != "null" ]; then
-            echo "INPUTS+=\"CERTIFICATE_FILE=${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {CERTIFICATE_FILE: \"${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}" != "null" ]; then
-            echo "INPUTS+=\"CERTIFICATE_PASSWORD=${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {CERTIFICATE_PASSWORD: \"${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}" != "null" ]; then
-            echo "INPUTS+=\"FUSION_SET_ID=${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {FUSION_SET_ID: \"${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}" != "null" ]; then
-            echo "INPUTS+=\"KEYSTORE_FILE=${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {KEYSTORE_FILE: \"${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}" != "null" ]; then
-            echo "INPUTS+=\"KEYSTORE_PASSWORD=${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {KEYSTORE_PASSWORD: \"${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}" != "null" ]; then
-            echo "INPUTS+=\"KEYSTORE_ALIAS=${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {KEYSTORE_ALIAS: \"${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}" != "null" ]; then
-            echo "INPUTS+=\"KEYSTORE_KEY_PASSWORD=${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {KEYSTORE_KEY_PASSWORD: \"${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}" != "null" ]; then
-            echo "INPUTS+=\"GOOGLE_PLAY_SIGNING=${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {GOOGLE_PLAY_SIGNING: \"${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}" != "null" ]; then
-            echo "INPUTS+=\"SIGN_FINGERPRINT=${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {SIGN_FINGERPRINT: \"${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}\"}' inputs.json)" > inputs.json
           fi
           if [ "${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}" != "null" ]; then
-            echo "INPUTS+=\"OUTPUT_APP_NAME=${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }} \"" >> inputs.sh
+            echo "INPUTS=\$(jq '. + {OUTPUT_APP_NAME: \"${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}\"}' inputs.json)" > inputs.json
           fi
+          cat inputs.json
 
-      - name: Source inputs
-        id: source_inputs
-        run: . ./inputs.sh
+      - name: Convert JSON to YAML
+        id: convert_json
+        run: |
+          jq -r 'to_entries | map("\(.key): \(.value|tostring)") | .[]' inputs.json > inputs.yaml
+          cat inputs.yaml
 
       - name: Appdome build-2secure
         uses: Appdome/github_build-2secure@pipline_testing
-        with: ${{ steps.source_inputs.outputs.INPUTS }}
+        with: ${{ steps.convert_json.outputs.yaml }}
 
       - name: Example of using Appdome secured app
         run: |
