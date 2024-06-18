@@ -32,10 +32,10 @@ jobs:
           if [ "${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}" != "null" ]; then
             echo "ENTITLEMENTS_FILE=${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}" >> $GITHUB_ENV
           fi
-          if [ "${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}" != "null" ]; then
+          if [ "${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}" != "" ]; then
             echo "CERTIFICATE_FILE=${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}" >> $GITHUB_ENV
           fi
-          if [ "${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}" != "null" ]; then
+          if [ "${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}" != "" ]; then
             echo "CERTIFICATE_PASSWORD=${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}" >> $GITHUB_ENV
           fi
           if [ "${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}" != "null" ]; then
