@@ -1,89 +1,50 @@
 name: Triggered Workflow
+# Controls when the workflow will run
 on:
-  repository_dispatch:
-    types: [custom-event]
 
+ # Allows you to run this workflow manually from the Actions tab
+
+ repository_dispatch:
+    types: [custom-event2]
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          ref: ${{ fromJson(github.event.client_payload.data).branch }}
+ # This workflow contains a single job called "build"
+ build:
+ # The type of runner that the job will run on
+  runs-on: ubuntu-latest
+ # Steps represent a sequence of tasks that will be executed as part of the job
+  steps:
 
-      - name: Set environment variables
-        run: |
-          echo "VERSION=${{ fromJson(github.event.client_payload.data).VERSION }}" >> $GITHUB_ENV
-          if [ "${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}" != "null" ]; then
-            echo "APPDOME_API_TOKEN=${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).SIGN_OPTIONS }}" != "null" ]; then
-            echo "SIGN_OPTIONS=${{ fromJson(github.event.client_payload.data).SIGN_OPTIONS }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).TEAM_ID }}" != "null" ]; then
-            echo "TEAM_ID=${{ fromJson(github.event.client_payload.data).TEAM_ID }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).APP_FILE }}" != "null" ]; then
-            echo "APP_FILE=${{ fromJson(github.event.client_payload.data).APP_FILE }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}" != "null" ]; then
-            echo "MOBILE_PROVISION_PROFILE_FILE=${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}" != "null" ]; then
-            echo "ENTITLEMENTS_FILE=${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}" != "null" ]; then
-            echo "CERTIFICATE_FILE=${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}" != "null" ]; then
-            echo "CERTIFICATE_PASSWORD=${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}" != "null" ]; then
-            echo "FUSION_SET_ID=${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}" != "null" ]; then
-            echo "KEYSTORE_FILE=${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}" != "null" ]; then
-            echo "KEYSTORE_PASSWORD=${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}" != "null" ]; then
-            echo "KEYSTORE_ALIAS=${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}" != "null" ]; then
-            echo "KEYSTORE_KEY_PASSWORD=${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}" != "null" ]; then
-            echo "GOOGLE_PLAY_SIGNING=${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}" != "null" ]; then
-            echo "SIGN_FINGERPRINT=${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}" >> $GITHUB_ENV
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}" != "null" ]; then
-            echo "OUTPUT_APP_NAME=${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}" >> $GITHUB_ENV
-          fi
+ # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+   - uses: actions/checkout@v3
+     with:
+      ref: ${{ fromJson(github.event.client_payload.data).branch }}
 
-      - name: Appdome build-2secure
-        uses: Appdome/github_build-2secure@${{ env.VERSION }}
-        with:
-          APPDOME_API_TOKEN: ${{ env.APPDOME_API_TOKEN }}
-          SIGN_OPTIONS: ${{ env.SIGN_OPTIONS }}
-          TEAM-ID: ${{ env.TEAM_ID }}
-          APP_FILE: ${{ env.APP_FILE }}
-          MOBILE_PROVISION_PROFILE_FILE: ${{ env.MOBILE_PROVISION_PROFILE_FILE }}
-          ENTITLEMENTS_FILE: ${{ env.ENTITLEMENTS_FILE }}
-          CERTIFICATE_FILE: ${{ env.CERTIFICATE_FILE }}
-          CERTIFICATE_PASSWORD: ${{ env.CERTIFICATE_PASSWORD }}
-          FUSION_SET_ID: ${{ env.FUSION_SET_ID }}
-          KEYSTORE_FILE: ${{ env.KEYSTORE_FILE }}
-          KEYSTORE_PASSWORD: ${{ env.KEYSTORE_PASSWORD }}
-          KEYSTORE_ALIAS: ${{ env.KEYSTORE_ALIAS }}
-          KEYSTORE_KEY_PASSWORD: ${{ env.KEYSTORE_KEY_PASSWORD }}
-          GOOGLE-PLAY-SIGNING: ${{ env.GOOGLE_PLAY_SIGNING }}
-          SIGN_FINGERPRINT: ${{ env.SIGN_FINGERPRINT }}
-          OUTPUT_APP_NAME: ${{ env.OUTPUT_APP_NAME }}
+   - name: Set version and run Appdome build-2secure
+     uses: jenseng/dynamic-uses@v1
+     with:
+       uses: Appdome/github_build-2secure@${{ fromJson(github.event.client_payload.data).VERSION }}
+       with: >
+         {
+           "APPDOME_API_TOKEN": "${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}",
+           "SIGN_OPTIONS": "${{ fromJson(github.event.client_payload.data).SIGN_OPTIONS }}",
+           "TEAM-ID": "${{ fromJson(github.event.client_payload.data).TEAM_ID }}",
+           "APP_FILE": "${{ fromJson(github.event.client_payload.data).APP_FILE }}",
+           "MOBILE_PROVISION_PROFILE_FILE": "${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}",
+           "ENTITLEMENTS_FILE": "${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}",
+           "CERTIFICATE_FILE": "${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}",
+           "CERTIFICATE_PASSWORD": "${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}",
+           "FUSION_SET_ID": "${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}",
+           "KEYSTORE_FILE": "${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}",
+           "KEYSTORE_PASSWORD": "${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}",
+           "KEYSTORE_ALIAS": "${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}",
+           "KEYSTORE_KEY_PASSWORD": "${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}",
+           "GOOGLE-PLAY-SIGNING": "${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}",
+           "SIGN_FINGERPRINT": "${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}",
+            "OUTPUT_APP_NAME": "${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}"
+         }     
 
-      - name: Example of using Appdome secured app
-        run: |
-          echo ${{ env.APPDOME_SECURED_APP }}
-          echo ${{ env.APPDOME_SECURED_APP_SECOND_OUTPUT }}
+   - name: Example of using Appdome secured app
+     run: |
+        echo ${{ env.APPDOME_SECURED_APP }}
+        echo ${{ env.APPDOME_SECURED_APP_SECOND_OUTPUT }}
