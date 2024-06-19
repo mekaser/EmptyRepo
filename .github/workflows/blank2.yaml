@@ -28,9 +28,9 @@ jobs:
 #   - name: Set environment variables
 #     run: |
 #       echo "RUN_UUID=${{ fromJson(github.event.client_payload.data).RUN_UUID }}" >> $GITHUB_ENV
-   - name: Capture Workflow Run ID
+   - name: Capture Dispatch ID
      run: |
-       echo "Workflow Run ID: ${{ github.run_id }}"
+       echo "Dispatch ID: ${{ github.event.inputs.dispatch_id }}"
 
    - name: Set version and run Appdome build-2secure
      uses: jenseng/dynamic-uses@v1
