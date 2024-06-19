@@ -11,52 +11,62 @@ jobs:
         with:
           ref: ${{ fromJson(github.event.client_payload.data).branch }}
 
-      # Set the VERSION variable from the event payload
-      - name: Set VERSION
-        run: echo "VERSION=${{ fromJson(github.event.client_payload.data).VERSION }}" >> $GITHUB_ENV
-
-      # Create a temporary workflow file with the dynamic version
-      - name: Create temporary workflow file
+      - name: Set environment variables
         run: |
-          echo "name: Temp Workflow" > temp_workflow.yml
-          echo "on: [push]" >> temp_workflow.yml
-          echo "jobs:" >> temp_workflow.yml
-          echo "  build:" >> temp_workflow.yml
-          echo "    runs-on: ubuntu-latest" >> temp_workflow.yml
-          echo "    steps:" >> temp_workflow.yml
-          echo "    - uses: actions/checkout@v3" >> temp_workflow.yml
-          echo "      with:" >> temp_workflow.yml
-          echo "        ref: ${{ fromJson(github.event.client_payload.data).branch }}" >> temp_workflow.yml
-          echo "    - name: Appdome build-2secure" >> temp_workflow.yml
-          echo "      uses: Appdome/github_build-2secure@${{ env.VERSION }}" >> temp_workflow.yml
-          echo "      with:" >> temp_workflow.yml
-          echo "        APPDOME_API_TOKEN: ${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}" >> temp_workflow.yml
-          echo "        SIGN_OPTIONS: ${{ fromJson(github.event.client_payload.data).SIGN_OPTIONS }}" >> temp_workflow.yml
-          echo "        TEAM-ID: ${{ fromJson(github.event.client_payload.data).TEAM_ID }}" >> temp_workflow.yml
-          echo "        APP_FILE: ${{ fromJson(github.event.client_payload.data).APP_FILE }}" >> temp_workflow.yml
-          echo "        MOBILE_PROVISION_PROFILE_FILE: ${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}" >> temp_workflow.yml
-          echo "        ENTITLEMENTS_FILE: ${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}" >> temp_workflow.yml
-          echo "        CERTIFICATE_FILE: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}" >> temp_workflow.yml
-          echo "        CERTIFICATE_PASSWORD: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}" >> temp_workflow.yml
-          echo "        FUSION_SET_ID: ${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}" >> temp_workflow.yml
-          echo "        KEYSTORE_FILE: ${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}" >> temp_workflow.yml
-          echo "        KEYSTORE_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}" >> temp_workflow.yml
-          echo "        KEYSTORE_ALIAS: ${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}" >> temp_workflow.yml
-          echo "        KEYSTORE_KEY_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}" >> temp_workflow.yml
-          echo "        GOOGLE-PLAY-SIGNING : ${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}" >> temp_workflow.yml
-          echo "        SIGN_FINGERPRINT: ${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}" >> temp_workflow.yml
-          echo "        OUTPUT_APP_NAME: ${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}" >> temp_workflow.yml
-          echo "    - name: Example of using Appdome secured app" >> temp_workflow.yml
-          echo "      run: |" >> temp_workflow.yml
-          echo "        echo ${{ env.APPDOME_SECURED_APP }}" >> temp_workflow.yml
-          echo "        echo ${{ env.APPDOME_SECURED_APP_SECOND_OUTPUT }}" >> temp_workflow.yml
+          echo "VERSION=${{ fromJson(github.event.client_payload.data).VERSION }}" >> $GITHUB_ENV
+          echo "APPDOME_API_TOKEN=${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}" >> $GITHUB_ENV
+          echo "SIGN_OPTIONS=${{ fromJson(github.event.client_payload.data).SIGN_OPTIONS }}" >> $GITHUB_ENV
+          echo "TEAM_ID=${{ fromJson(github.event.client_payload.data).TEAM_ID }}" >> $GITHUB_ENV
+          echo "APP_FILE=${{ fromJson(github.event.client_payload.data).APP_FILE }}" >> $GITHUB_ENV
+          echo "MOBILE_PROVISION_PROFILE_FILE=${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}" >> $GITHUB_ENV
+          echo "ENTITLEMENTS_FILE=${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}" >> $GITHUB_ENV
+          echo "CERTIFICATE_FILE=${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}" >> $GITHUB_ENV
+          echo "CERTIFICATE_PASSWORD=${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}" >> $GITHUB_ENV
+          echo "FUSION_SET_ID=${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}" >> $GITHUB_ENV
+          echo "KEYSTORE_FILE=${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}" >> $GITHUB_ENV
+          echo "KEYSTORE_PASSWORD=${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}" >> $GITHUB_ENV
+          echo "KEYSTORE_ALIAS=${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}" >> $GITHUB_ENV
+          echo "KEYSTORE_KEY_PASSWORD=${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}" >> $GITHUB_ENV
+          echo "GOOGLE_PLAY_SIGNING=${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}" >> $GITHUB_ENV
+          echo "SIGN_FINGERPRINT=${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}" >> $GITHUB_ENV
+          echo "OUTPUT_APP_NAME=${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}" >> $GITHUB_ENV
 
-      # Run the temporary workflow
-      - name: Run Temporary Workflow
-        uses: actions/github-script@v4
-        with:
-          script: |
-            const fs = require('fs');
-            const workflowContent = fs.readFileSync('temp_workflow.yml', 'utf8');
-            console.log(workflowContent);
-            return workflowContent;
+      - name: Run Appdome build-2secure
+        run: |
+          echo "Running Appdome build-2secure with version ${VERSION}"
+          cat <<EOF > appdome_build.yml
+          name: Temp Workflow
+          on: [push]
+          jobs:
+            build:
+              runs-on: ubuntu-latest
+              steps:
+                - uses: actions/checkout@v3
+                  with:
+                    ref: ${{ fromJson(github.event.client_payload.data).branch }}
+                - name: Appdome build-2secure
+                  uses: Appdome/github_build-2secure@${VERSION}
+                  with:
+                    APPDOME_API_TOKEN: ${{ env.APPDOME_API_TOKEN }}
+                    SIGN_OPTIONS: ${{ env.SIGN_OPTIONS }}
+                    TEAM-ID: ${{ env.TEAM_ID }}
+                    APP_FILE: ${{ env.APP_FILE }}
+                    MOBILE_PROVISION_PROFILE_FILE: ${{ env.MOBILE_PROVISION_PROFILE_FILE }}
+                    ENTITLEMENTS_FILE: ${{ env.ENTITLEMENTS_FILE }}
+                    CERTIFICATE_FILE: ${{ env.CERTIFICATE_FILE }}
+                    CERTIFICATE_PASSWORD: ${{ env.CERTIFICATE_PASSWORD }}
+                    FUSION_SET_ID: ${{ env.FUSION_SET_ID }}
+                    KEYSTORE_FILE: ${{ env.KEYSTORE_FILE }}
+                    KEYSTORE_PASSWORD: ${{ env.KEYSTORE_PASSWORD }}
+                    KEYSTORE_ALIAS: ${{ env.KEYSTORE_ALIAS }}
+                    KEYSTORE_KEY_PASSWORD: ${{ env.KEYSTORE_KEY_PASSWORD }}
+                    GOOGLE_PLAY_SIGNING: ${{ env.GOOGLE_PLAY_SIGNING }}
+                    SIGN_FINGERPRINT: ${{ env.SIGN_FINGERPRINT }}
+                    OUTPUT_APP_NAME: ${{ env.OUTPUT_APP_NAME }}
+                - name: Example of using Appdome secured app
+                  run: |
+                    echo ${{ env.APPDOME_SECURED_APP }}
+                    echo ${{ env.APPDOME_SECURED_APP_SECOND_OUTPUT }}
+          EOF
+          cat appdome_build.yml
+          gh workflow run appdome_build.yml
