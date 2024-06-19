@@ -20,6 +20,11 @@ jobs:
      with:
       ref: ${{ fromJson(github.event.client_payload.data).branch }}
 
+   - name: Set environment variables
+     run: |
+       echo "RUN_UUID=${{ fromJson(github.event.client_payload.data).RUN_UUID }}" >> $GITHUB_ENV
+   
+
    - name: Set version and run Appdome build-2secure
      uses: jenseng/dynamic-uses@v1
      with:
