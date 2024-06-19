@@ -1,5 +1,4 @@
 name: Triggered Workflow
-
 on:
   repository_dispatch:
     types: [custom-event2]
@@ -12,71 +11,52 @@ jobs:
         with:
           ref: ${{ fromJson(github.event.client_payload.data).branch }}
 
-      - name: Set environment variables
-        id: set_env
-        run: |
-          echo "INPUTS={}" > inputs.json
-          if [ "${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {APPDOME_API_TOKEN: \"${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).SIGN_OPTIONS }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {SIGN_OPTIONS: \"${{ fromJson(github.event.client_payload.data).SIGN_OPTIONS }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).TEAM_ID }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {TEAM_ID: \"${{ fromJson(github.event.client_payload.data).TEAM_ID }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).APP_FILE }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {APP_FILE: \"${{ fromJson(github.event.client_payload.data).APP_FILE }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {MOBILE_PROVISION_PROFILE_FILE: \"${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {ENTITLEMENTS_FILE: \"${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {CERTIFICATE_FILE: \"${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {CERTIFICATE_PASSWORD: \"${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {FUSION_SET_ID: \"${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {KEYSTORE_FILE: \"${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {KEYSTORE_PASSWORD: \"${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {KEYSTORE_ALIAS: \"${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {KEYSTORE_KEY_PASSWORD: \"${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {GOOGLE_PLAY_SIGNING: \"${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {SIGN_FINGERPRINT: \"${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}\"}' inputs.json)" > inputs.json
-          fi
-          if [ "${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}" != "null" ]; then
-            echo "INPUTS=\$(jq '. + {OUTPUT_APP_NAME: \"${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}\"}' inputs.json)" > inputs.json
-          fi
-          cat inputs.json
+      # Set the VERSION variable from the event payload
+      - name: Set VERSION
+        run: echo "VERSION=${{ fromJson(github.event.client_payload.data).VERSION }}" >> $GITHUB_ENV
 
-      - name: Convert JSON to YAML
-        id: convert_json
+      # Create a temporary workflow file with the dynamic version
+      - name: Create temporary workflow file
         run: |
-          jq -r 'to_entries | map("\(.key): \(.value|tostring)") | .[]' inputs.json > inputs.yaml
-          cat inputs.yaml
+          echo "name: Temp Workflow" > temp_workflow.yml
+          echo "on: [push]" >> temp_workflow.yml
+          echo "jobs:" >> temp_workflow.yml
+          echo "  build:" >> temp_workflow.yml
+          echo "    runs-on: ubuntu-latest" >> temp_workflow.yml
+          echo "    steps:" >> temp_workflow.yml
+          echo "    - uses: actions/checkout@v3" >> temp_workflow.yml
+          echo "      with:" >> temp_workflow.yml
+          echo "        ref: ${{ fromJson(github.event.client_payload.data).branch }}" >> temp_workflow.yml
+          echo "    - name: Appdome build-2secure" >> temp_workflow.yml
+          echo "      uses: Appdome/github_build-2secure@${{ env.VERSION }}" >> temp_workflow.yml
+          echo "      with:" >> temp_workflow.yml
+          echo "        APPDOME_API_TOKEN: ${{ fromJson(github.event.client_payload.data).APPDOME_API_TOKEN }}" >> temp_workflow.yml
+          echo "        SIGN_OPTIONS: ${{ fromJson(github.event.client_payload.data).SIGN_OPTIONS }}" >> temp_workflow.yml
+          echo "        TEAM-ID: ${{ fromJson(github.event.client_payload.data).TEAM_ID }}" >> temp_workflow.yml
+          echo "        APP_FILE: ${{ fromJson(github.event.client_payload.data).APP_FILE }}" >> temp_workflow.yml
+          echo "        MOBILE_PROVISION_PROFILE_FILE: ${{ fromJson(github.event.client_payload.data).MOBILE_PROVISION_PROFILE_FILE }}" >> temp_workflow.yml
+          echo "        ENTITLEMENTS_FILE: ${{ fromJson(github.event.client_payload.data).ENTITLEMENTS_FILE }}" >> temp_workflow.yml
+          echo "        CERTIFICATE_FILE: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_FILE }}" >> temp_workflow.yml
+          echo "        CERTIFICATE_PASSWORD: ${{ fromJson(github.event.client_payload.data).CERTIFICATE_PASSWORD }}" >> temp_workflow.yml
+          echo "        FUSION_SET_ID: ${{ fromJson(github.event.client_payload.data).FUSION_SET_ID }}" >> temp_workflow.yml
+          echo "        KEYSTORE_FILE: ${{ fromJson(github.event.client_payload.data).KEYSTORE_FILE }}" >> temp_workflow.yml
+          echo "        KEYSTORE_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}" >> temp_workflow.yml
+          echo "        KEYSTORE_ALIAS: ${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}" >> temp_workflow.yml
+          echo "        KEYSTORE_KEY_PASSWORD: ${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}" >> temp_workflow.yml
+          echo "        GOOGLE-PLAY-SIGNING : ${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}" >> temp_workflow.yml
+          echo "        SIGN_FINGERPRINT: ${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}" >> temp_workflow.yml
+          echo "        OUTPUT_APP_NAME: ${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}" >> temp_workflow.yml
+          echo "    - name: Example of using Appdome secured app" >> temp_workflow.yml
+          echo "      run: |" >> temp_workflow.yml
+          echo "        echo ${{ env.APPDOME_SECURED_APP }}" >> temp_workflow.yml
+          echo "        echo ${{ env.APPDOME_SECURED_APP_SECOND_OUTPUT }}" >> temp_workflow.yml
 
-      - name: Appdome build-2secure
-        uses: Appdome/github_build-2secure@pipline_testing
-        with: ${{ steps.convert_json.outputs.yaml }}
-
-      - name: Example of using Appdome secured app
-        run: |
-          echo ${{ env.APPDOME_SECURED_APP }}
-          echo ${{ env.APPDOME_SECURED_APP_SECOND_OUTPUT }}
+      # Run the temporary workflow
+      - name: Run Temporary Workflow
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const fs = require('fs');
+            const workflowContent = fs.readFileSync('temp_workflow.yml', 'utf8');
+            console.log(workflowContent);
+            return workflowContent;
