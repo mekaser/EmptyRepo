@@ -20,16 +20,10 @@ jobs:
  # Steps represent a sequence of tasks that will be executed as part of the job
   steps:
  # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-   - name: Capture Dispatch ID
-     run: |
-       echo "Dispatch ID: ${{ fromJson(github.event.client_payload.data).dispatch_id }}" >> GITHUB_ENV 
-
    - name: ${{ fromJson(github.event.client_payload.data).dispatch_id }}
-     id: capture-dispatch-id
      run: |
-        echo "Dispatch ID: ${{ env.dispatch_id }}"
-          
-       
+       echo "Dispatch ID: ${{ fromJson(github.event.client_payload.data).dispatch_id }}" >> GITHUB_ENV
+     id: capture-dispatch-id
 
    - uses: actions/checkout@v3
      with:
