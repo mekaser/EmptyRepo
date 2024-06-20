@@ -24,9 +24,12 @@ jobs:
      run: |
        echo "Dispatch ID: ${{ fromJson(github.event.client_payload.data).dispatch_id }}" >> GITHUB_ENV 
 
-   - name: Print Dispatch ID
+   - name: ${{ fromJson(github.event.client_payload.data).dispatch_id }}
+     id: capture-dispatch-id
      run: |
-       echo "Dispatch ID: ${{ env.dispatch_id }}"
+        echo "Dispatch ID: ${{ env.dispatch_id }}"
+          
+       
 
    - uses: actions/checkout@v3
      with:
