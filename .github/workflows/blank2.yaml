@@ -22,7 +22,11 @@ jobs:
  # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
    - name: Capture Dispatch ID
      run: |
-       echo "Dispatch ID: ${{ fromJson(github.event.client_payload.data).dispatch_id }}"
+       echo "Dispatch ID: ${{ fromJson(github.event.client_payload.data).dispatch_id }}" >> GITHUB_ENV 
+
+   - name: Print Dispatch ID
+     run: |
+         echo ${{ env.Dispatch_ID }}
 
    - uses: actions/checkout@v3
      with:
