@@ -26,7 +26,7 @@ jobs:
 
    - name: Print Dispatch ID
      run: |
-         echo ${{ env.Dispatch_ID }}
+       echo "Dispatch ID: ${{ env.dispatch_id }}"
 
    - uses: actions/checkout@v3
      with:
