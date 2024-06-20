@@ -19,19 +19,17 @@ jobs:
   runs-on: ubuntu-latest
  # Steps represent a sequence of tasks that will be executed as part of the job
   steps:
-
  # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-   - uses: actions/checkout@v3
-     with:
-      ref: ${{ fromJson(github.event.client_payload.data).branch }}
-
-#   - name: Set environment variables
-#     run: |
-#       echo "RUN_UUID=${{ fromJson(github.event.client_payload.data).RUN_UUID }}" >> $GITHUB_ENV
    - name: Capture Dispatch ID
      run: |
        echo "Dispatch ID: ${{ github.event.inputs.dispatch_id }}"
 
+   - uses: actions/checkout@v3
+     with:
+      ref: ${{ fromJson(github.event.client_payload.data).branch }}
+#   - name: Set environment variables
+#     run: |
+#       echo "RUN_UUID=${{ fromJson(github.event.client_payload.data).RUN_UUID }}" >> $GITHUB_ENV
    - name: Set version and run Appdome build-2secure
      uses: jenseng/dynamic-uses@v1
      with:
