@@ -24,7 +24,7 @@ jobs:
      with:
        APPDOME_API_TOKEN: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiYWQ2Yzk4MzAtMTY5OC0xMWVmLWI2NDktMzM3Y2U1NzAwNDY3Iiwic2FsdCI6IjRmMjBjMTRjLWU1MWItNDQ3YS1hMjBjLTNmY2FiNGIxODFlYSJ9.AI5soWJrClObNzD1T0yy_hLWVfLGyam08fhQm5QT4qs"
        SIGN_OPTIONS: "SIGN_ON_APPDOME"
-
+       APPDOME_SERVER_BASE_URL: "https://qamaster.dev.appdome.com/"
        # iOS
        # APP_FILE: "./ARandomNumber.ipa"
        MOBILE_PROVISION_PROFILE_FILE: "https://appdome-automation-vanilla-apps.s3.amazonaws.com/Thomas/PipelineFiles/Automation.mobileprovision?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAUMYEOMD5JGE4UVGR%2F20240805%2Feu-central-1%2Fs3%2Faws4_request&X-Amz-Date=20240805T063011Z&X-Amz-Expires=36000&X-Amz-SignedHeaders=host&X-Amz-Signature=7a3a88b795e0c10981cd84c91d3fbf783842795808895ee0ab04335f050450f0"
