@@ -57,7 +57,9 @@ jobs:
            "GOOGLE-PLAY-SIGNING": "${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}",
            "SIGN_FINGERPRINT": "${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}",
            "BUILD_TO_TEST" : "${{ fromJson(github.event.client_payload.data).BUILD_TO_TEST }}",
-            "OUTPUT_APP_NAME": "${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}"
+            "OUTPUT_APP_NAME": "${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}",
+            "GOOGLE_APPLICATION_CREDENTIALS" : "${{ fromJson(github.event.client_payload.data).GOOGLE_APPLICATION_CREDENTIALS }}",
+            "FIREBASE_APP_ID": "${{ fromJson(github.event.client_payload.data).FIREBASE_APP_ID }}"
          }     
 
 
