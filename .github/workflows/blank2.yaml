@@ -58,7 +58,8 @@ jobs:
            "SIGN_FINGERPRINT": "${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}",
            "BUILD_TO_TEST" : "${{ fromJson(github.event.client_payload.data).BUILD_TO_TEST }}",
             "OUTPUT_APP_NAME": "${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}",
-            "FIREBASE_APP_ID": "${{ fromJson(github.event.client_payload.data).FIREBASE_APP_ID }}"
+            "FIREBASE_APP_ID": "${{ fromJson(github.event.client_payload.data).FIREBASE_APP_ID }}",
+            "GOOGLE_PLAY_SIGN_FINGERPRINT_UPGRADE": "${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGN_FINGERPRINT_UPGRADE }}"
          }     
 
 
