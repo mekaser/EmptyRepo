@@ -54,7 +54,7 @@ jobs:
            "KEYSTORE_PASSWORD": "${{ fromJson(github.event.client_payload.data).KEYSTORE_PASSWORD }}",
            "KEYSTORE_ALIAS": "${{ fromJson(github.event.client_payload.data).KEYSTORE_ALIAS }}",
            "KEYSTORE_KEY_PASSWORD": "${{ fromJson(github.event.client_payload.data).KEYSTORE_KEY_PASSWORD }}",
-           "GOOGLE-PLAY-SIGNING": "${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}",
+           "GOOGLE_PLAY_SIGNING": "${{ fromJson(github.event.client_payload.data).GOOGLE_PLAY_SIGNING }}",
            "SIGN_FINGERPRINT": "${{ fromJson(github.event.client_payload.data).SIGN_FINGERPRINT }}",
            "BUILD_TO_TEST" : "${{ fromJson(github.event.client_payload.data).BUILD_TO_TEST }}",
             "OUTPUT_APP_NAME": "${{ fromJson(github.event.client_payload.data).OUTPUT_APP_NAME }}",
